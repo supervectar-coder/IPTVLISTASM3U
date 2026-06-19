@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>SUPERVECTAR DESCARGADOR LISTAS IPTV</title>
+
+<style>
+body {
+  font-family: Arial;
+  background: #ffffff;
+  color: #222;
+  padding: 20px;
+}
+
+h1 {
+  color: red;
+}
+
+.lista {
+  background: #f2f2f2;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+button {
+  margin: 5px;
+  padding: 8px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: #444;
+  color: #fff;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #666;
+}
+
+a {
+  color: #1e90ff;
+  word-break: break-all;
+}
+</style>
+
+</head>
+<body>
+
+<h1 style="display:flex; align-items:center; justify-content:center; gap:10px;">
+    <img src="https://i.ibb.co/7dGjZb80/6.jpg" alt="Logo" style="height:40px;">
+    SUPERVECTAR DESCARGADOR LISTAS IPTV EXTERNAS M3U
+</h1>
+
+<div id="listas"></div>
+
+<script>
+const fuente = "https://gist.githubusercontent.com/josepimba/c03c5a68d1f23c362b6451bb0d3a4bce/raw/iptvlandia.w3u";
+
+async function cargar() {
+  const contenedor = document.getElementById("listas");
+  contenedor.innerHTML = "⏳ Cargando listas...";
+
+  try {
+    const res = await fetch(fuente);
+    const texto = await res.text();
+
+    const regex = /(https?:\/\/[^\s]+)/g;
+
+    const urls = (texto.match(regex) || []).filter(url => {
+      return !/\.png/i.test(url) &&
+             !/\.gif/i.test(url) &&
+             !/\.w3u/i.test(url) &&
+             !/josepimbatv/i.test(url) &&
+             !/bit\.ly\/josepimbatv/i.test(url);
+    });
+
+    if (!urls.length) {
+      contenedor.innerHTML = "❌ No se encontraron listas válidas";
+      return;
+    }
+
+    contenedor.innerHTML = "";
+
+    urls.forEach((url) => {
+      const nombre = url.split("/").pop().substring(0, 30);
+
+      const div = document.createElement("div");
+      div.className = "lista";
+
+      div.innerHTML = `
+        <strong>${nombre}</strong><br>
+        <a href="${url}" target="_blank">${url}</a><br>
+        <button onclick="descargar('${url}')">1- PULSA EL ENLACE AZUL PARA DESCARGAR LA LISTA ⬆</button>
+        <button onclick="descargar('${url}')">2- ABRELA CON TU REPRODUCTOR IPTV FAVORITO</button>
+        <button onclick="descargar('${url}')">3- SI NO FUNCIONA CONECTATE A UN VPN</button>
+      `;
+
+      contenedor.appendChild(div);
+    });
+
+  } catch (err) {
+    contenedor.innerHTML = "❌ Error al cargar las listas";
+    console.error(err);
+  }
+}
+
+function descargar(url) {
+  window.open(url, "_blank");
+}
+
+cargar();
+</script>
+
+</body>
+</html>
+
