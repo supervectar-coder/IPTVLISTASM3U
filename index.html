@@ -50,8 +50,32 @@ a {
 
 <h1 style="display:flex; align-items:center; justify-content:center; gap:10px;">
     <img src="https://i.ibb.co/7dGjZb80/6.jpg" alt="Logo" style="height:40px;">
-    SUPERVECTAR DESCARGADOR LISTAS IPTV EXTERNAS M3U
+    SUPERVECTAR OTRAS LISTAS IPTV EXTERNAS M3U
 </h1>
+<div id="notice">
+  ⚠️ PARA REPRODUCIR ALGUNAS LISTAS NECESITAS ESTAR CONECTADO A UN SERVIDOR VPN:
+  <a href="https://one.one.one.one/es-ES/" target="_blank">Descargar aqui VPN WARP 1.1.1.1</a> 
+
+</div>
+
+<div id="notice">
+  ⚠️ Para reproducir las listas en ANDROID es necesario abrirlas en el reproductor externo WISEPLAY:
+  <a href="https://play.google.com/store/apps/details?id=com.wiseplay&hl=es" target="_blank">Descargar WISEPLAY Android</a> |
+  <a href="https://drive.google.com/file/d/1B-xTvZSLkSu6VlFn2dfFj2zJtIkPTy6S/view" target="_blank">Descargar WISEPLAY Android TV</a> 
+  
+</div>
+
+<div id="notice">
+  ⚠️ Para reproducir las listas en IPHONE/IPAD es necesario abrirlas en el reproductor externo WHATPLAY:
+  <a href="https://apps.apple.com/us/app/whatplay-reproductor-iptv/id6443530611" target="_blank">Descargar WHATPLAY Iphone/Ipad</a> 
+
+</div>
+
+<div id="notice">
+  ⚠️ Para reproducir las listas en WINDOWS es necesario abrirlas en el reproductor externo IP-TV PLAYER:
+  <a href="http://e.informer.com/borpas.info/iptvplayer" target="_blank">Descargar IP-TV PLAYER Windows</a> 
+
+</div>
 
 <div id="listas"></div>
 
@@ -92,7 +116,7 @@ async function cargar() {
       div.innerHTML = `
         <strong>${nombre}</strong><br>
         <a href="${url}" target="_blank">${url}</a><br>
-        <button onclick="descargar('${url}')">1- PULSA EL ENLACE AZUL PARA DESCARGAR LA LISTA ⬆</button>
+        <button onclick="descargar('${url}')">1- COPIA EL ENLACE AZUL, O PULSALO PARA DESCARGAR LA LISTA ⬆</button>
         <button onclick="descargar('${url}')">2- ABRELA CON TU REPRODUCTOR IPTV FAVORITO</button>
         <button onclick="descargar('${url}')">3- SI NO FUNCIONA CONECTATE A UN VPN</button>
       `;
